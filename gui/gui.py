@@ -20,7 +20,7 @@ def gui(outgoing_data: Queue):
     def sendConfig(export=False):   #sends config to chip
         output = markeB1Var.get()+";"+materialB1Var.get()+";"+durchmesserB1Var.get()+";"+drehzahlB1Var.get()+";"+markeB2Var.get()+";"+materialB2Var.get()+";"+durchmesserB2Var.get()+";"+drehzahlB2Var.get()+";"+staubInputVar.get()+";"+probeInputVar.get()+";"+verfahrwegInput.get()+";"+drehRichtung1.get()+";"+drehRichtung2.get()+";"+str(nullHoehe.get())+";"+str(aktuelleHoehe.get())+";"
         if (export == False):
-            outgoing_data.put("1")
+            outgoing_data.put(output)
             time.sleep(1)
         else:
             return output
