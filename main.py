@@ -22,6 +22,12 @@ if __name__ == '__main__':
    gui_start_data = processhandler.memory()
 
    processhandler.start_process(gui.gui, gui_start_data)
+   
+   datastream = DataStream()
+
+   datastream.unpack_start_data()
+
+   print(gui_start_data.get(gui.gui, gui_start_data))
 
 
 ''' 
