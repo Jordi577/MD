@@ -13,12 +13,15 @@ def get_and_unpack_data(incoming: Queue, outgoing: Queue):
       outgoing.put(unpacked_data)
       
 if __name__ == '__main__':
+      
    
    #vw = Verfahrwege()
    #vw.x_step.move(100,"Left", 120)
 
-   #while(True):
-      gui.gui()
+   processhandler = ProcessHandler()
+   gui_start_data = processhandler.memory()
+
+   processhandler.start_process(gui.gui, gui_start_data)
 
 
 ''' 

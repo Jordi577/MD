@@ -5,11 +5,13 @@ from ttkthemes import themed_tk as tkt
 from tkinter import filedialog
 import csv
 import random
+from multiprocessing import Process, Queue
 import string
 from time import strftime
+import time
 import os
 
-def gui():
+def gui(outgoing_data: Queue):
         #Methoden
     def time(): #bearbeitet den Text vom Label "Zeit", indem der Inhalt auf die aktuelle Uhrzeit gesetzt wird
         zeit.config(text=strftime("%H:%M:%S %p"))
@@ -18,7 +20,8 @@ def gui():
     def sendConfig(export=False):   #sends config to chip
         output = markeB1Var.get()+";"+materialB1Var.get()+";"+durchmesserB1Var.get()+";"+drehzahlB1Var.get()+";"+markeB2Var.get()+";"+materialB2Var.get()+";"+durchmesserB2Var.get()+";"+drehzahlB2Var.get()+";"+staubInputVar.get()+";"+probeInputVar.get()+";"+verfahrwegInput.get()+";"+drehRichtung1.get()+";"+drehRichtung2.get()+";"+str(nullHoehe.get())+";"+str(aktuelleHoehe.get())+";"
         if (export == False):
-            print(output)
+            outgoing_data.put("1")
+            time.sleep(1)
         else:
             return output
 
